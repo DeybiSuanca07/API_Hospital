@@ -1,9 +1,11 @@
+using API_Hospital.Middlewares;
+using Hospital.Application;
 using Hospital.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddApplication();
 builder.Services.AddDependencys(builder.Configuration);
 
 builder.Services.AddControllers();
@@ -12,6 +14,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

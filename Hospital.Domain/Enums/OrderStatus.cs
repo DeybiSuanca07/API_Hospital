@@ -2,7 +2,7 @@
 {
     public enum OrderStatus
     {
-        Pending,
-        Processed,
+        Pendiente,
+        Procesada,
     }
 }
