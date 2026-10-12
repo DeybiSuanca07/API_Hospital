@@ -25,9 +25,9 @@ namespace Hospital.Infrastructure.Repositories
             return await _context.Orders.FirstOrDefaultAsync(o => o.Id == id);
         }
 
-        public async Task<List<Order>> GetAllAsync(string? patientId, OrderStatus? status)
+        public async Task<(List<Order> Items, int TotalCount)> GetAllAsync(string? patientId, OrderStatus? status, int page, int pageSize)
         {
-            IQueryable<Order> query = _context.Orders.AsQueryable();
+            IQueryable<Order> query = _context.Orders.AsNoTracking();
 
             if (!string.IsNullOrWhiteSpace(patientId))
                 query = query.Where(o => o.PatientId == patientId);
@@ -35,7 +35,15 @@ namespace Hospital.Infrastructure.Repositories
             if (status.HasValue)
                 query = query.Where(o => o.Status == status.Value);
 
-            return await query.OrderByDescending(o => o.Id).ToListAsync();
+            var totalCount = await query.CountAsync();
+
+            var items = await query
+                .OrderByDescending(o => o.Id)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (items, totalCount);
         }
 
         public async Task<List<Order>> GetPendingOrdersAsync()

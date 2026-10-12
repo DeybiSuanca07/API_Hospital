@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Evidencia de logs para la entrega (los logs de ejecución en API_Hospital/logs siguen ignorados).
+# Primero se re-incluye la carpeta (ignorada por [Ll]ogs/) y luego sus archivos .log (ignorados por *.log)
+!docs/logs/
+!docs/logs/*.log

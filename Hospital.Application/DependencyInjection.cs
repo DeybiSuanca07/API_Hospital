@@ -1,4 +1,5 @@
 using Hospital.Application.Abstractions;
+using Hospital.Application.Common;
 using Hospital.Application.Orders.Commands;
 using Hospital.Application.Orders.Dtos;
 using Hospital.Application.Orders.Queries;
@@ -15,7 +16,7 @@ namespace Hospital.Application
 
 
             services.AddScoped<IQueryHandler<GetOrderQuery, OrderDto>, GetOrderQueryHandler>();
-            services.AddScoped<IQueryHandler<GetOrdersQuery, List<OrderDto>>, GetOrdersQueryHandler>();
+            services.AddScoped<IQueryHandler<GetOrdersQuery, PagedResult<OrderDto>>, GetOrdersQueryHandler>();
 
             return services;
         }

@@ -1,0 +1,35 @@
+2026-10-12 03:06:45.634 [INF] Hospital.Infrastructure.BackgroundJobs.OrderProcessingWorker: Service Worker de órdenes iniciado
+2026-10-12 03:06:45.692 [INF] Microsoft.Hosting.Lifetime: Now listening on: http://localhost:5251
+2026-10-12 03:06:45.698 [INF] Microsoft.Hosting.Lifetime: Application started. Press Ctrl+C to shut down.
+2026-10-12 03:06:45.701 [INF] Microsoft.Hosting.Lifetime: Hosting environment: Development
+2026-10-12 03:06:45.704 [INF] Microsoft.Hosting.Lifetime: Content root path: D:\Documentos\Proyectos\API_Hospital\API_Hospital
+2026-10-12 03:18:29.803 [INF] Hospital.Infrastructure.BackgroundJobs.OrderProcessingWorker: Service Worker de órdenes iniciado
+2026-10-12 03:18:29.988 [INF] Microsoft.Hosting.Lifetime: Now listening on: https://localhost:7107
+2026-10-12 03:18:29.990 [INF] Microsoft.Hosting.Lifetime: Now listening on: http://localhost:5251
+2026-10-12 03:18:30.023 [INF] Microsoft.Hosting.Lifetime: Application started. Press Ctrl+C to shut down.
+2026-10-12 03:18:30.023 [INF] Microsoft.Hosting.Lifetime: Hosting environment: Development
+2026-10-12 03:18:30.024 [INF] Microsoft.Hosting.Lifetime: Content root path: D:\Documentos\Proyectos\API_Hospital\API_Hospital
+2026-10-12 03:18:30.632 [INF] Serilog.AspNetCore.RequestLoggingMiddleware: HTTP GET /swagger/index.html responded 200 in 57.7027 ms
+2026-10-12 03:18:30.759 [INF] Serilog.AspNetCore.RequestLoggingMiddleware: HTTP GET /swagger/v1/swagger.json responded 200 in 10.8910 ms
+2026-10-12 03:18:51.393 [INF] Hospital.Application.Orders.Commands.CreateOrderCommandHandler: Orden 4 creada en estado "Pendiente". Paciente: 10, Servicio: LAB0010, Prioridad: "Normal"
+2026-10-12 03:18:51.424 [INF] Serilog.AspNetCore.RequestLoggingMiddleware: HTTP POST /api/Orders responded 201 in 209.5553 ms
+2026-10-12 03:18:59.870 [INF] Hospital.Application.Orders.Commands.ProcessPendingOrdersCommandHandler: Orden 4 ("Normal") en procesamiento
+2026-10-12 03:19:01.879 [INF] Hospital.Application.Orders.Commands.ProcessPendingOrdersCommandHandler: Orden 4 cambió de estado: "Pendiente" -> "Procesada"
+2026-10-12 03:19:01.880 [INF] Hospital.Infrastructure.BackgroundJobs.OrderProcessingWorker: 1 orden(es) procesada(s)
+2026-10-12 03:19:02.250 [INF] Hospital.Application.Orders.Commands.CreateOrderCommandHandler: Orden 5 creada en estado "Pendiente". Paciente: 20, Servicio: LAB0010, Prioridad: "Urgente"
+2026-10-12 03:19:02.253 [INF] Serilog.AspNetCore.RequestLoggingMiddleware: HTTP POST /api/Orders responded 201 in 7.7137 ms
+2026-10-12 03:19:14.845 [INF] Hospital.Application.Orders.Commands.ProcessPendingOrdersCommandHandler: Orden 5 ("Urgente") en procesamiento
+2026-10-12 03:19:16.853 [INF] Hospital.Application.Orders.Commands.ProcessPendingOrdersCommandHandler: Orden 5 cambió de estado: "Pendiente" -> "Procesada"
+2026-10-12 03:19:16.854 [INF] Hospital.Infrastructure.BackgroundJobs.OrderProcessingWorker: 1 orden(es) procesada(s)
+2026-10-12 03:23:04.137 [INF] Hospital.Infrastructure.BackgroundJobs.OrderProcessingWorker: Service Worker de órdenes iniciado
+2026-10-12 03:23:04.279 [INF] Microsoft.Hosting.Lifetime: Now listening on: https://localhost:7107
+2026-10-12 03:23:04.280 [INF] Microsoft.Hosting.Lifetime: Now listening on: http://localhost:5251
+2026-10-12 03:23:04.318 [INF] Microsoft.Hosting.Lifetime: Application started. Press Ctrl+C to shut down.
+2026-10-12 03:23:04.319 [INF] Microsoft.Hosting.Lifetime: Hosting environment: Development
+2026-10-12 03:23:04.319 [INF] Microsoft.Hosting.Lifetime: Content root path: D:\Documentos\Proyectos\API_Hospital\API_Hospital
+2026-10-12 03:23:05.281 [INF] Serilog.AspNetCore.RequestLoggingMiddleware: HTTP GET /swagger/index.html responded 200 in 60.0494 ms
+2026-10-12 03:23:05.412 [INF] Serilog.AspNetCore.RequestLoggingMiddleware: HTTP GET /swagger/v1/swagger.json responded 200 in 11.7372 ms
+2026-10-12 03:23:11.904 [WRN] API_Hospital.Middlewares.ExceptionHandlingMiddleware: POST /api/Orders con 400. ValidationException: La prioridad debe ser Normal o Urgente.
+2026-10-12 03:23:11.939 [INF] Serilog.AspNetCore.RequestLoggingMiddleware: HTTP POST /api/Orders responded 400 in 220.9878 ms
+2026-10-12 03:23:29.938 [WRN] API_Hospital.Middlewares.ExceptionHandlingMiddleware: GET /api/Orders/16666 con 404. NotFoundException: No existe la orden 16666.
+2026-10-12 03:23:29.939 [INF] Serilog.AspNetCore.RequestLoggingMiddleware: HTTP GET /api/Orders/16666 responded 404 in 87.9749 ms

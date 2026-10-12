@@ -7,7 +7,7 @@ namespace Hospital.Domain.Repositories
     {
         Task AddAsync(Order order);
         Task<Order?> GetByIdAsync(int id);
-        Task<List<Order>> GetAllAsync(string? patientId, OrderStatus? status);
+        Task<(List<Order> Items, int TotalCount)> GetAllAsync(string? patientId, OrderStatus? status, int page, int pageSize);
         Task<List<Order>> GetPendingOrdersAsync();
     }
 }

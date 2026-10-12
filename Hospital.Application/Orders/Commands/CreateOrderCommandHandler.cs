@@ -44,7 +44,9 @@ namespace Hospital.Application.Orders.Commands
             await _orderRepository.AddAsync(order);
             await _unitOfWork.SaveChangesAsync();
 
-            _logger.LogInformation("Orden {OrderId} creada en estado {Status}", order.Id, order.Status);
+            // No se registra el nombre del paciente: es un dato personal
+            _logger.LogInformation("Orden {OrderId} creada en estado {Status}. Paciente: {PatientId}, Servicio: {ServiceCode}, Prioridad: {Priority}",
+                order.Id, order.Status, order.PatientId, order.ServiceCode, order.Priority);
 
             return order.Id;
         }
