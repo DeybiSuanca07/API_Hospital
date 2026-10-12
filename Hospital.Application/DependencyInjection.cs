@@ -11,6 +11,7 @@ namespace Hospital.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddScoped<ICommandHandler<CreateOrderCommand, int>, CreateOrderCommandHandler>();
+            services.AddScoped<ICommandHandler<ProcessPendingOrdersCommand, int>, ProcessPendingOrdersCommandHandler>();
 
 
             services.AddScoped<IQueryHandler<GetOrderQuery, OrderDto>, GetOrderQueryHandler>();

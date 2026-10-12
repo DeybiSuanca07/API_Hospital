@@ -34,13 +34,14 @@ namespace API_Hospital.Middlewares
                 ValidationException => (StatusCodes.Status400BadRequest, exception.Message),
                 NotFoundException => (StatusCodes.Status404NotFound, exception.Message),
                 DomainException => (StatusCodes.Status409Conflict, exception.Message),
-                _ => (StatusCodes.Status500InternalServerError, "Ocurrió un error inesperado.")
+                _ => (StatusCodes.Status500InternalServerError, "Ocurrió un error inesperado")
             };
 
             if (statusCode == StatusCodes.Status500InternalServerError)
-                _logger.LogError(exception, "Error no controlado en {Path}", context.Request.Path);
+                _logger.LogError(exception, "Error no controlado en {Method} {Path}", context.Request.Method, context.Request.Path);
             else
-                _logger.LogWarning("{Type}: {Message}", exception.GetType().Name, exception.Message);
+                _logger.LogWarning("{Method} {Path} con {StatusCode}. {Type}: {Message}",
+                    context.Request.Method, context.Request.Path, statusCode, exception.GetType().Name, exception.Message);
 
             if (context.Response.HasStarted)
                 return;

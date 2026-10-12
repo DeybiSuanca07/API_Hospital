@@ -1,4 +1,5 @@
 ﻿using Hospital.Domain.Repositories;
+using Hospital.Infrastructure.BackgroundJobs;
 using Hospital.Infrastructure.Data;
 using Hospital.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,8 @@ namespace Hospital.Infrastructure
 
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddHostedService<OrderProcessingWorker>();
 
             return services;
         }

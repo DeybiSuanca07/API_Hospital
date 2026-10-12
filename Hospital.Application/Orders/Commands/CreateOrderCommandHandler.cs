@@ -3,6 +3,7 @@ using Hospital.Application.Common.Exceptions;
 using Hospital.Domain.Entities;
 using Hospital.Domain.Enums;
 using Hospital.Domain.Repositories;
+using Microsoft.Extensions.Logging;
 
 namespace Hospital.Application.Orders.Commands
 {
@@ -10,11 +11,13 @@ namespace Hospital.Application.Orders.Commands
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ILogger<CreateOrderCommandHandler> _logger;
 
-        public CreateOrderCommandHandler(IOrderRepository orderRepository, IUnitOfWork unitOfWork)
+        public CreateOrderCommandHandler(IOrderRepository orderRepository, IUnitOfWork unitOfWork, ILogger<CreateOrderCommandHandler> logger)
         {
             _orderRepository = orderRepository;
             _unitOfWork = unitOfWork;
+            _logger = logger;
         }
 
         public async Task<int> Handle(CreateOrderCommand command)
@@ -40,6 +43,8 @@ namespace Hospital.Application.Orders.Commands
 
             await _orderRepository.AddAsync(order);
             await _unitOfWork.SaveChangesAsync();
+
+            _logger.LogInformation("Orden {OrderId} creada en estado {Status}", order.Id, order.Status);
 
             return order.Id;
         }

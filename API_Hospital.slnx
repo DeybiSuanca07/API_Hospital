@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="API_Hospital/API_Hospital.csproj" />
+  <Project Path="Hospital.Application.Tests/Hospital.Tests.csproj" />
   <Project Path="Hospital.Application/Hospital.Application.csproj" />
   <Project Path="Hospital.Domain/Hospital.Domain.csproj" />
   <Project Path="Hospital.Infrastructure/Hospital.Infrastructure.csproj" />

@@ -37,5 +37,13 @@ namespace Hospital.Infrastructure.Repositories
 
             return await query.OrderByDescending(o => o.Id).ToListAsync();
         }
+
+        public async Task<List<Order>> GetPendingOrdersAsync()
+        {
+            return await _context.Orders
+                .Where(o => o.Status == OrderStatus.Pendiente)
+                .OrderByDescending(o => o.Priority == OrderPriority.Urgente)
+                .ToListAsync();
+        }
     }
 }
